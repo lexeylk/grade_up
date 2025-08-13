@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grade_up/features/home/examinee_home_screen.dart';
-import 'package:grade_up/features/home/examiner_home_screen.dart';
+import 'package:grade_up/features/home/examiner/examiner_home_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

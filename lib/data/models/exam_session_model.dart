@@ -19,7 +19,63 @@ class ExamSession {
     this.status = ExamStatus.scheduled,
   });
 
-  // Методы toJson/fromJson, copyWith...
+   bool get isUpcoming => status == ExamStatus.scheduled && 
+                        scheduledAt.isAfter(DateTime.now());
+  
+  bool get isPast => scheduledAt.isBefore(DateTime.now());
+
+  // Улучшенный copyWith
+  ExamSession copyWith({
+    String? id,
+    String? examinerId,
+    String? examineeId,
+    DateTime? scheduledAt,
+    List<String>? questionIds,
+    ExamStatus? status,
+  }) {
+    return ExamSession(
+      id: id ?? this.id,
+      examinerId: examinerId ?? this.examinerId,
+      examineeId: examineeId ?? this.examineeId,
+      scheduledAt: scheduledAt ?? this.scheduledAt,
+      questionIds: questionIds ?? this.questionIds,
+      status: status ?? this.status,
+    );
+  }
+
+  // Для отображения в UI
+  String get statusLabel {
+    switch (status) {
+      case ExamStatus.scheduled:
+        return isUpcoming ? 'Запланирована' : 'Просрочена';
+      case ExamStatus.inProgress:
+        return 'В процессе';
+      case ExamStatus.completed:
+        return 'Завершена';
+      case ExamStatus.cancelled:
+        return 'Отменена';
+    }
+  }
+
+  // Пример мок-данных
+  static List<ExamSession> mockSessions = [
+    ExamSession(
+      id: '1',
+      examinerId: 'ex1',
+      examineeId: 'usr1',
+      scheduledAt: DateTime.now().add(Duration(days: 1)),
+      questionIds: ['q1', 'q2'],
+    ),
+    ExamSession(
+      id: '2',
+      examinerId: 'ex1',
+      examineeId: 'usr2',
+      scheduledAt: DateTime.now().subtract(Duration(days: 1)),
+      questionIds: ['q3'],
+      status: ExamStatus.completed,
+    ),
+  ];
+
 }
 
 enum ExamStatus {
