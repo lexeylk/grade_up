@@ -5,12 +5,11 @@ import 'package:grade_up/data/models/question_model.dart';
 
 class QuestionsScreen extends StatelessWidget {
   final Exam exam;
-  final QuestionList questionList;
 
   const QuestionsScreen({
     super.key,
     required this.exam,
-    required this.questionList,
+
   });
 
   @override
@@ -19,11 +18,11 @@ class QuestionsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(exam.title),
       ),
-      body: _buildQuestionList(),
+      body: _buildQuestionList(exam.questionList),
     );
   }
 
-  Widget _buildQuestionList() {
+  Widget _buildQuestionList(QuestionList questionList) {
     if (questionList.questions.isEmpty) {
       return Center(
         child: Column(

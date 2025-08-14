@@ -48,7 +48,9 @@ class _ExaminerHomeScreenState extends State<ExaminerHomeScreen>
         children: const [
           MeetingsTab(),
           QuestionsTab(),
-          EmployeesTab(),
+          EmployeesTab(
+            currentExaminerId: 'e1',
+          ),
         ],
       ),
     );

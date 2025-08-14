@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grade_up/data/models/exam_model.dart';
-import 'package:grade_up/data/models/questions_list.dart';
 import 'package:grade_up/features/questions/questions_screen.dart';
 
 class QuestionsTab extends StatelessWidget {
@@ -40,14 +39,13 @@ class QuestionsTab extends StatelessWidget {
       itemCount: exams.length,
       itemBuilder: (context, index) {
         final exam = exams[index];
-        final questionList = QuestionList.mockQuestionLists[exam.questionListId];
 
         return Card(
           elevation: 2,
           margin: const EdgeInsets.only(bottom: 16),
           child: InkWell(
             borderRadius: BorderRadius.circular(12),
-            onTap: () => _openQuestionsScreen(context, exam, questionList),
+            onTap: () => _openQuestionsScreen(context, exam),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -65,7 +63,7 @@ class QuestionsTab extends StatelessWidget {
                       ),
                       Chip(
                         label: Text(
-                          '${questionList?.questions.length ?? 0} вопросов',
+                          '${exam.questionList.questions.length} вопросов',
                         ),
                       ),
                     ],
@@ -95,19 +93,12 @@ class QuestionsTab extends StatelessWidget {
     return '${date.day}.${date.month}.${date.year}';
   }
 
-  void _openQuestionsScreen(
-    BuildContext context,
-    Exam exam,
-    QuestionList? questionList,
-  ) {
-    if (questionList == null) return;
-
+  void _openQuestionsScreen(BuildContext context, Exam exam) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => QuestionsScreen(
           exam: exam,
-          questionList: questionList,
         ),
       ),
     );
@@ -121,7 +112,6 @@ class QuestionsTab extends StatelessWidget {
   }
 
   void _createNewExam(BuildContext context) {
-    // Реализуем позже
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Создание новой аттестации')),
     );
@@ -181,17 +171,13 @@ class _QuestionsSearchDelegate extends SearchDelegate<String> {
   }
 
   void _openExamDetails(BuildContext context, Exam exam) {
-    final questionList = QuestionList.mockQuestionLists[exam.questionListId];
-    if (questionList != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => QuestionsScreen(
-            exam: exam,
-            questionList: questionList,
-          ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => QuestionsScreen(
+          exam: exam,
         ),
-      );
-    }
+      ),
+    );
   }
 }
