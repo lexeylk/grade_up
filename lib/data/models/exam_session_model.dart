@@ -19,9 +19,8 @@ class ExamSession {
     this.status = ExamStatus.scheduled,
   });
 
-   bool get isUpcoming => status == ExamStatus.scheduled && 
-                        scheduledAt.isAfter(DateTime.now());
-  
+  bool get isUpcoming => status == ExamStatus.scheduled && scheduledAt.isAfter(DateTime.now());
+
   bool get isPast => scheduledAt.isBefore(DateTime.now());
 
   // Улучшенный copyWith
@@ -62,25 +61,24 @@ class ExamSession {
     ExamSession(
       id: '1',
       examinerId: 'ex1',
-      examineeId: 'usr1',
-      scheduledAt: DateTime.now().add(Duration(days: 1)),
+      examineeId: 'u1',
+      scheduledAt: DateTime.now().add(const Duration(days: 1)),
       questionIds: ['q1', 'q2'],
     ),
     ExamSession(
       id: '2',
       examinerId: 'ex1',
-      examineeId: 'usr2',
-      scheduledAt: DateTime.now().subtract(Duration(days: 1)),
+      examineeId: 'u2',
+      scheduledAt: DateTime.now().subtract(const Duration(days: 1)),
       questionIds: ['q3'],
       status: ExamStatus.completed,
     ),
   ];
-
 }
 
 enum ExamStatus {
   scheduled, // Назначена
   inProgress, // В процессе
-  completed,  // Завершена
-  cancelled,  // Отменена
+  completed, // Завершена
+  cancelled, // Отменена
 }

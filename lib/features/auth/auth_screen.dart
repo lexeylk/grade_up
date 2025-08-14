@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatelessWidget {
+  const AuthScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Выбор роли')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
+            FilledButton.icon(
               onPressed: () => _enterAs(context, isExaminer: true),
-              child: Text('Я экзаменатор'),
+              icon: const Icon(Icons.verified_user),
+              label: const Text('Я экзаменатор'),
             ),
-            ElevatedButton(
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
               onPressed: () => _enterAs(context, isExaminer: false),
-              child: Text('Я экзаменуемый'),
+              icon: const Icon(Icons.school),
+              label: const Text('Я экзаменуемый'),
             ),
           ],
         ),
@@ -23,11 +29,10 @@ class AuthScreen extends StatelessWidget {
   }
 
   void _enterAs(BuildContext context, {required bool isExaminer}) {
-    // Сохраняем роль и переходим на главный экран
-    // context.read<AuthCubit>().setRole(isExaminer);
     Navigator.pushReplacementNamed(
-      context, 
+      context,
       '/home',
-      arguments: isExaminer);
+      arguments: isExaminer,
+    );
   }
 }

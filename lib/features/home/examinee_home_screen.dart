@@ -8,6 +8,11 @@ class ExamineeHomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Мои аттестации')),
       body: const Center(child: Text('Здесь список ваших тестов')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Обновить',
+        child: const Icon(Icons.refresh),
+      ),
     );
   }
 }

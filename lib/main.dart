@@ -12,13 +12,40 @@ class GradeUpApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/auth', // Стартовый маршрут
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.indigo,
+      ),
+      initialRoute: '/auth',
       routes: {
-        '/auth': (context) => AuthScreen(),
-        '/home': (context) => HomeScreen(),
-        
-        // Другие маршруты...
+        '/auth': (context) => const AuthScreen(),
+        '/home': (context) => const HomeScreen(),
       },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/session_detail') {
+          final sessionId = settings.arguments as String?;
+          return MaterialPageRoute(
+            builder: (_) => _SessionDetailScreen(sessionId: sessionId),
+          );
+        }
+        return null;
+      },
+    );
+  }
+}
+
+class _SessionDetailScreen extends StatelessWidget {
+  final String? sessionId;
+  const _SessionDetailScreen({required this.sessionId});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Детали сессии')),
+      body: Center(
+        child: Text('Сессия: ${sessionId ?? 'неизвестно'}'),
+      ),
     );
   }
 }

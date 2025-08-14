@@ -10,15 +10,6 @@ class QuestionsTab extends StatelessWidget {
     final exams = Exam.mockExams;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('База вопросов'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () => _showSearch(context),
-          ),
-        ],
-      ),
       body: _buildContent(exams),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _createNewExam(context),
@@ -60,6 +51,10 @@ class QuestionsTab extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () => _showSearch(context),
                       ),
                       Chip(
                         label: Text(
