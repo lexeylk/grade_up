@@ -10,7 +10,7 @@ class ExaminerHomeScreen extends StatefulWidget {
   State<ExaminerHomeScreen> createState() => _ExaminerHomeScreenState();
 }
 
-class _ExaminerHomeScreenState extends State<ExaminerHomeScreen> 
+class _ExaminerHomeScreenState extends State<ExaminerHomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -55,4 +55,4 @@ class _ExaminerHomeScreenState extends State<ExaminerHomeScreen>
       ),
     );
   }
-}
+} 

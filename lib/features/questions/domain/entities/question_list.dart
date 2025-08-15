@@ -1,11 +1,11 @@
-// lib/data/models/question_list.dart
+// features/questions/domain/entities/question_list.dart
 
-import 'package:grade_up/data/models/question_model.dart';
+import 'package:grade_up/features/questions/domain/entities/question.dart';
 
 class QuestionList {
   final String id;
   final List<Question> questions;
-  final DateTime loadedAt; // Когда вопросы загружены
+  final DateTime loadedAt;
 
   QuestionList({
     required this.id,
@@ -94,14 +94,4 @@ class QuestionList {
       loadedAt: DateTime(2023, 8, 5),
     ),
   };
-  // Загрузка из базы (заглушка)
-  // static Future<QuestionList> loadForSession(String sessionId) async {
-  //   final questions = await QuestionsRepository.getForSession(sessionId);
-  //   return QuestionList(
-  //     id: 'ql_$sessionId',
-  //     sessionId: sessionId,
-  //     questions: questions,
-  //     loadedAt: DateTime.now(),
-  //   );
-  // }
-}
+} 

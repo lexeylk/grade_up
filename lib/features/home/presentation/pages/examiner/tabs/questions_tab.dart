@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grade_up/data/models/exam_model.dart';
-import 'package:grade_up/features/questions/questions_screen.dart';
+import 'package:grade_up/features/exams/domain/entities/exam.dart';
+import 'package:grade_up/features/questions/presentation/pages/questions_screen.dart';
 
 class QuestionsTab extends StatelessWidget {
   const QuestionsTab({super.key});
@@ -175,4 +175,4 @@ class _QuestionsSearchDelegate extends SearchDelegate<String> {
       ),
     );
   }
-}
+} 

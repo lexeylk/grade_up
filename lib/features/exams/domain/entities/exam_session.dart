@@ -1,14 +1,14 @@
-// lib/data/models/exam_session_model.dart
+// features/exams/domain/entities/exam_session.dart
 import 'package:flutter/foundation.dart';
 
 @immutable
 class ExamSession {
   final String id;
-  final String examinerId; // ID экзаменатора
-  final String examineeId; // ID экзаменуемого
-  final DateTime scheduledAt; // Дата и время встречи
-  final List<String> questionIds; // Вопросы ДЛЯ ЭТОЙ встречи
-  final ExamStatus status; // Статус встречи
+  final String examinerId;
+  final String examineeId;
+  final DateTime scheduledAt;
+  final List<String> questionIds;
+  final ExamStatus status;
 
   const ExamSession({
     required this.id,
@@ -20,10 +20,8 @@ class ExamSession {
   });
 
   bool get isUpcoming => status == ExamStatus.scheduled && scheduledAt.isAfter(DateTime.now());
-
   bool get isPast => scheduledAt.isBefore(DateTime.now());
 
-  // Улучшенный copyWith
   ExamSession copyWith({
     String? id,
     String? examinerId,
@@ -42,7 +40,6 @@ class ExamSession {
     );
   }
 
-  // Для отображения в UI
   String get statusLabel {
     switch (status) {
       case ExamStatus.scheduled:
@@ -56,7 +53,6 @@ class ExamSession {
     }
   }
 
-  // Пример мок-данных
   static List<ExamSession> mockSessions = [
     ExamSession(
       id: '1',
@@ -76,9 +72,4 @@ class ExamSession {
   ];
 }
 
-enum ExamStatus {
-  scheduled, // Назначена
-  inProgress, // В процессе
-  completed, // Завершена
-  cancelled, // Отменена
-}
+enum ExamStatus { scheduled, inProgress, completed, cancelled } 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grade_up/data/models/exam_session_model.dart';
-import 'package:grade_up/data/models/user_model.dart';
-import 'package:grade_up/features/home/examiner/widgets/meeting_card.dart';
+import 'package:grade_up/features/exams/domain/entities/exam_session.dart';
+import 'package:grade_up/features/users/domain/entities/user.dart';
+import 'package:grade_up/features/home/presentation/pages/examiner/widgets/meeting_card.dart';
 
 class MeetingsTab extends StatefulWidget {
   const MeetingsTab({super.key});
@@ -68,4 +68,4 @@ class _MeetingsTabState extends State<MeetingsTab> {
       const SnackBar(content: Text('Создание новой сессии')),
     );
   }
-}
+} 

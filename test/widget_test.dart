@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:grade_up/main.dart';
+import 'package:grade_up/app/app.dart';
 
 void main() {
   testWidgets('Переход с экрана выбора роли к панели экзаменатора', (WidgetTester tester) async {

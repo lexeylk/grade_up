@@ -1,6 +1,5 @@
-// lib/data/models/exam_model.dart
-import 'package:grade_up/data/models/questions_list.dart';
-
+// features/exams/domain/entities/exam.dart
+import 'package:grade_up/features/questions/domain/entities/question_list.dart';
 
 class Exam {
   final String id;
@@ -17,7 +16,6 @@ class Exam {
     required this.questionList,
   });
 
-  // Моковые данные для примера
   static final List<Exam> mockExams = [
     Exam(
       id: 'exam_flutter',
@@ -55,4 +53,4 @@ class Exam {
       createdAt: DateTime(2023, 9, 1),
     ),
   ];
-}
+} 

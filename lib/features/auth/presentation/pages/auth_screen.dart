@@ -35,4 +35,4 @@ class AuthScreen extends StatelessWidget {
       arguments: isExaminer,
     );
   }
-}
+} 

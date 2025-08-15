@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grade_up/data/models/exam_model.dart';
-import 'package:grade_up/data/models/questions_list.dart';
-import 'package:grade_up/data/models/question_model.dart';
+import 'package:grade_up/features/exams/domain/entities/exam.dart';
+import 'package:grade_up/features/questions/domain/entities/question_list.dart';
+import 'package:grade_up/features/questions/domain/entities/question.dart';
 
 class QuestionsScreen extends StatelessWidget {
   final Exam exam;
@@ -9,7 +9,6 @@ class QuestionsScreen extends StatelessWidget {
   const QuestionsScreen({
     super.key,
     required this.exam,
-
   });
 
   @override
@@ -73,4 +72,4 @@ class QuestionsScreen extends StatelessWidget {
       ),
     );
   }
-}
+} 
